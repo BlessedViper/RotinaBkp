@@ -1,0 +1,16 @@
+C:\Users\felipe.alves\source\repos\RotinaBackupService\RotinaBackupService\obj\Debug\RotinaBackupService.csproj.AssemblyReference.cache
+C:\Users\felipe.alves\source\repos\RotinaBackupService\RotinaBackupService\obj\Debug\RotinaBackupService.csproj.SuggestedBindingRedirects.cache
+C:\Users\felipe.alves\source\repos\RotinaBackupService\RotinaBackupService\obj\Debug\RotinaBackupService.Properties.Resources.resources
+C:\Users\felipe.alves\source\repos\RotinaBackupService\RotinaBackupService\obj\Debug\RotinaBackupService.csproj.GenerateResource.cache
+C:\Users\felipe.alves\source\repos\RotinaBackupService\RotinaBackupService\obj\Debug\RotinaBackupService.csproj.CoreCompileInputs.cache
+C:\Users\felipe.alves\source\repos\RotinaBackupService\RotinaBackupService\bin\Debug\RotinaBackupService.exe.config
+C:\Users\felipe.alves\source\repos\RotinaBackupService\RotinaBackupService\bin\Debug\RotinaBackupService.exe
+C:\Users\felipe.alves\source\repos\RotinaBackupService\RotinaBackupService\bin\Debug\RotinaBackupService.pdb
+C:\Users\felipe.alves\source\repos\RotinaBackupService\RotinaBackupService\obj\Debug\RotinaBackupService.exe
+C:\Users\felipe.alves\source\repos\RotinaBackupService\RotinaBackupService\obj\Debug\RotinaBackupService.pdb
+C:\Users\felipe.alves\source\repos\RotinaBackupService\RotinaBackupService\obj\Debug\RotinaBackupService.Front.Conexao.resources
+C:\Users\felipe.alves\source\repos\RotinaBackupService\RotinaBackupService\bin\Debug\MaterialSkin.dll
+C:\Users\felipe.alves\source\repos\RotinaBackupService\RotinaBackupService\obj\Debug\RotinaBackupService.csproj.CopyComplete
+C:\Users\felipe.alves\source\repos\RotinaBackupService\RotinaBackupService\obj\Debug\RotinaBackupService.Front.Principal.resources
+C:\Users\felipe.alves\source\repos\RotinaBackupService\RotinaBackupService\bin\Debug\Data\Database.mdf
+C:\Users\felipe.alves\source\repos\RotinaBackupService\RotinaBackupService\bin\Debug\Data\Database_log.ldf
