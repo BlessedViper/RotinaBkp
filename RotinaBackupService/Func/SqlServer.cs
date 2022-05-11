@@ -1,17 +1,37 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Security;
+using System.Data.SqlClient;
+
 
 namespace RotinaBackupService.Func.SqlServer
 {
     public class SqlServer
     {
-        public string Servidor { get; set; }
-        public string Banco { get; set; }
-        public string Pass { get; set; }
-        public string User { get; set; }
+        
+        SqlConnection conc;
+        
+        
+        public SqlServer()
+        {
+            
+        }
+
+        
+
+        public void TestCon(string Connection)
+        {
+                conc.ConnectionString = Connection;
+                conc.Open();
+
+        }
+
+    
+
+        public void Bkp()
+        { 
+            
+
+        }
+
+
     }
 }

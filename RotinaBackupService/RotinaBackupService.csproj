@@ -80,6 +80,7 @@
     </Compile>
     <Compile Include="Func\ConfigBackup.cs" />
     <Compile Include="Func\RealizaBkp.cs" />
+    <Compile Include="Func\SettingsMani.cs" />
     <Compile Include="Func\SqlServer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
