@@ -8,19 +8,21 @@ namespace RotinaBackupService.Func.SqlServer
     {
         
         SqlConnection conc;
-        
-        
-        public SqlServer()
+        public string ConnectionString { get; private set; }
+
+
+        public SqlServer(string connectionString)
         {
-            
+            connectionString = ConnectionString;
+
         }
 
         
 
         public void TestCon(string Connection)
-        {
-                conc.ConnectionString = Connection;
-                conc.Open();
+        { 
+            conc.ConnectionString = ConnectionString;
+            conc.Open();
 
         }
 

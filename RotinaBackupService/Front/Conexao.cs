@@ -2,6 +2,7 @@
 using RotinaBackupService.Func.SqlServer;
 using System;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace RotinaBackupService.Front
 {
@@ -20,13 +21,29 @@ namespace RotinaBackupService.Front
 
         private void gravarBt_Click(object sender, EventArgs e)
         {
+            try
+            {
+                TestaCon();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Sql Conection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             SetSettings();
         }
 
         private void texteConBt_Click(object sender, EventArgs e)
         {
-            TestaCon();
-            
+            try
+            {
+                TestaCon();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Sql Conection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         public void SetSettings()
@@ -40,14 +57,18 @@ namespace RotinaBackupService.Front
 
         public void TestaCon()
         {
-            var conec = string.Format("DataSource={0};Inicital Catalog={1};User ID={2};Password={3}", txtServidor.Text, txtBanco.Text, txtUser.Text, txtSenha.Text);
-            SqlServer sql = new SqlServer();
-            try 
-            {
-                sql.TestCon(conec);
-            }
             
-
+            SettingsMani settings = new SettingsMani();
+            settings.GetSqlConfigs();
+            SqlServer sql = new SqlServer(settings.Connection);
+            try
+            {
+                sql.TestCon(sql.ConnectionString);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Falha ao se conectar a base de dados - " + ex.Message);
+            }
         }
     }
 }

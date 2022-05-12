@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
+using RotinaBackupService.Func;
 
 namespace RotinaBackupService.Front
 {
@@ -20,7 +21,9 @@ namespace RotinaBackupService.Front
 
         private void Principal_Load(object sender, EventArgs e)
         {
-
+            SettingsMani settings = new SettingsMani();
+            settings.GetStringConnection();
+            lbTeste.Text = settings.GetSqlConfigs();
         }
     }
 }

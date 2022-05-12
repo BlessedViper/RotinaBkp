@@ -1,8 +1,6 @@
-﻿using RotinaBackupService.Func.SqlServer;
+﻿using RotinaBackupService.Func;
+using RotinaBackupService.Func.SqlServer;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RotinaBackupService
@@ -17,7 +15,14 @@ namespace RotinaBackupService
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            
+            //if ()
+            //{
+
+            //}
             Application.Run(new Front.Conexao());
+            Application.Run(new Front.Principal());
             //SqlServer sql = new SqlServer();
 
             //if (sql.Servidor == null || sql.Banco == null || sql.User == null || sql.Pass == null )
