@@ -1,5 +1,5 @@
 ﻿using RotinaBackupService.Func;
-using RotinaBackupService.Func.SqlServer;
+using RotinaBackupService.Func.Conection.settings;
 using System;
 using System.Windows.Forms;
 
@@ -21,7 +21,7 @@ namespace RotinaBackupService
             //{
 
             //}
-            Application.Run(new Front.Conexao());
+            //Application.Run(new Front.ConexaoForm());
             Application.Run(new Front.Principal());
             //SqlServer sql = new SqlServer();
 

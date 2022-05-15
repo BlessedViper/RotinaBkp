@@ -66,12 +66,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Front\Conexao.cs">
+    <Compile Include="Front\ConexaoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Front\Conexao.Designer.cs">
-      <DependentUpon>Conexao.cs</DependentUpon>
+    <Compile Include="Front\ConexaoForm.Designer.cs">
+      <DependentUpon>ConexaoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Func\Cripto.cs" />
     <Compile Include="Front\Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,11 +82,12 @@
     <Compile Include="Func\ConfigBackup.cs" />
     <Compile Include="Func\RealizaBkp.cs" />
     <Compile Include="Func\SettingsMani.cs" />
-    <Compile Include="Func\SqlServer.cs" />
+    <Compile Include="Func\SqlAgent.cs" />
+    <Compile Include="Func\SQLConnection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Front\Conexao.resx">
-      <DependentUpon>Conexao.cs</DependentUpon>
+    <EmbeddedResource Include="Front\ConexaoForm.resx">
+      <DependentUpon>ConexaoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Front\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
