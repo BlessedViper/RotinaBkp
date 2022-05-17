@@ -11,6 +11,11 @@ namespace RotinaBackupService.Func.Conection
     public class SqlAgent
     {
 
+        public SqlAgent()
+        {
+
+        }
+
         public void Dbcc()
         {
             SettingsMani settings = new SettingsMani();
@@ -27,7 +32,7 @@ namespace RotinaBackupService.Func.Conection
             var connection = settings.GetConnection();
             var banco = settings.GetBase();
             var caminho = settings.GetCaminho();
-            var backupCmd = "BACKUP DATABASE " + banco +"TO DISK=" + caminho +"\\%backupName%.bak";
+            var backupCmd = $@"BACKUP DATABASE {banco} TO DISK={caminho}\%backupName%.bak";
 
             SqlConnection con = new SqlConnection(connection);
             SqlCommand cmd = new SqlCommand(backupCmd,con);

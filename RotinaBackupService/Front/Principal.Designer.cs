@@ -28,15 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
-            this.lbCaminho = new MaterialSkin.Controls.MaterialLabel();
-            this.tcPrincipal = new MaterialSkin.Controls.MaterialTabControl();
-            this.BackupSettings = new System.Windows.Forms.TabPage();
-            this.EmailSettings = new System.Windows.Forms.TabPage();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.tcPrincipal.SuspendLayout();
-            this.BackupSettings.SuspendLayout();
-            this.EmailSettings.SuspendLayout();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.tbControlPrincipal = new MaterialSkin.Controls.MaterialTabControl();
+            this.tbSettings = new System.Windows.Forms.TabPage();
+            this.tbBanco = new System.Windows.Forms.TabPage();
+            this.tbControlPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialDivider1
@@ -49,66 +48,49 @@
             this.materialDivider1.Size = new System.Drawing.Size(0, 1);
             this.materialDivider1.TabIndex = 0;
             // 
-            // lbCaminho
+            // imageList1
             // 
-            this.lbCaminho.AutoSize = true;
-            this.lbCaminho.Depth = 0;
-            this.lbCaminho.Font = new System.Drawing.Font("Roboto", 11F);
-            this.lbCaminho.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lbCaminho.Location = new System.Drawing.Point(16, 19);
-            this.lbCaminho.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lbCaminho.Name = "lbCaminho";
-            this.lbCaminho.Size = new System.Drawing.Size(180, 24);
-            this.lbCaminho.TabIndex = 1;
-            this.lbCaminho.Text = "Caminho do Backup";
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.White;
+            this.imageList1.Images.SetKeyName(0, "config.png");
+            this.imageList1.Images.SetKeyName(1, "base.png");
             // 
-            // tcPrincipal
+            // tbControlPrincipal
             // 
-            this.tcPrincipal.Controls.Add(this.BackupSettings);
-            this.tcPrincipal.Controls.Add(this.EmailSettings);
-            this.tcPrincipal.Depth = 0;
-            this.tcPrincipal.Location = new System.Drawing.Point(12, 83);
-            this.tcPrincipal.MouseState = MaterialSkin.MouseState.HOVER;
-            this.tcPrincipal.Name = "tcPrincipal";
-            this.tcPrincipal.SelectedIndex = 0;
-            this.tcPrincipal.Size = new System.Drawing.Size(811, 508);
-            this.tcPrincipal.TabIndex = 3;
+            this.tbControlPrincipal.Controls.Add(this.tbSettings);
+            this.tbControlPrincipal.Controls.Add(this.tbBanco);
+            this.tbControlPrincipal.Depth = 0;
+            this.tbControlPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbControlPrincipal.ImageList = this.imageList1;
+            this.tbControlPrincipal.Location = new System.Drawing.Point(3, 64);
+            this.tbControlPrincipal.MouseState = MaterialSkin.MouseState.HOVER;
+            this.tbControlPrincipal.Multiline = true;
+            this.tbControlPrincipal.Name = "tbControlPrincipal";
+            this.tbControlPrincipal.SelectedIndex = 0;
+            this.tbControlPrincipal.Size = new System.Drawing.Size(829, 536);
+            this.tbControlPrincipal.TabIndex = 1;
             // 
-            // BackupSettings
+            // tbSettings
             // 
-            this.BackupSettings.BackColor = System.Drawing.Color.White;
-            this.BackupSettings.Controls.Add(this.lbCaminho);
-            this.BackupSettings.Location = new System.Drawing.Point(4, 25);
-            this.BackupSettings.Name = "BackupSettings";
-            this.BackupSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.BackupSettings.Size = new System.Drawing.Size(803, 479);
-            this.BackupSettings.TabIndex = 0;
-            this.BackupSettings.Text = "Backup Settings";
-            this.BackupSettings.Click += new System.EventHandler(this.tabPage1_Click);
+            this.tbSettings.BackColor = System.Drawing.Color.White;
+            this.tbSettings.ImageKey = "config.png";
+            this.tbSettings.Location = new System.Drawing.Point(4, 39);
+            this.tbSettings.Name = "tbSettings";
+            this.tbSettings.Padding = new System.Windows.Forms.Padding(3);
+            this.tbSettings.Size = new System.Drawing.Size(821, 493);
+            this.tbSettings.TabIndex = 0;
+            this.tbSettings.Text = "Settings";
             // 
-            // EmailSettings
+            // tbBanco
             // 
-            this.EmailSettings.BackColor = System.Drawing.Color.White;
-            this.EmailSettings.Controls.Add(this.materialLabel1);
-            this.EmailSettings.Location = new System.Drawing.Point(4, 25);
-            this.EmailSettings.Name = "EmailSettings";
-            this.EmailSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.EmailSettings.Size = new System.Drawing.Size(803, 479);
-            this.EmailSettings.TabIndex = 1;
-            this.EmailSettings.Text = "E-mails Settings";
-            // 
-            // materialLabel1
-            // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(445, 46);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(136, 24);
-            this.materialLabel1.TabIndex = 0;
-            this.materialLabel1.Text = "materialLabel1";
+            this.tbBanco.BackColor = System.Drawing.Color.White;
+            this.tbBanco.ImageKey = "base.png";
+            this.tbBanco.Location = new System.Drawing.Point(4, 39);
+            this.tbBanco.Name = "tbBanco";
+            this.tbBanco.Padding = new System.Windows.Forms.Padding(3);
+            this.tbBanco.Size = new System.Drawing.Size(821, 493);
+            this.tbBanco.TabIndex = 1;
+            this.tbBanco.Text = "Banco de Dados";
             // 
             // Principal
             // 
@@ -116,19 +98,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(835, 603);
-            this.Controls.Add(this.tcPrincipal);
-            this.Controls.Add(this.materialDivider1);
+            this.Controls.Add(this.tbControlPrincipal);
+            this.DrawerTabControl = this.tbControlPrincipal;
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Rotina de Backup";
             this.Load += new System.EventHandler(this.Principal_Load);
-            this.tcPrincipal.ResumeLayout(false);
-            this.BackupSettings.ResumeLayout(false);
-            this.BackupSettings.PerformLayout();
-            this.EmailSettings.ResumeLayout(false);
-            this.EmailSettings.PerformLayout();
+            this.tbControlPrincipal.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -136,10 +114,9 @@
         #endregion
 
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
-        private MaterialSkin.Controls.MaterialLabel lbCaminho;
-        private MaterialSkin.Controls.MaterialTabControl tcPrincipal;
-        private System.Windows.Forms.TabPage BackupSettings;
-        private System.Windows.Forms.TabPage EmailSettings;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private System.Windows.Forms.ImageList imageList1;
+        private MaterialSkin.Controls.MaterialTabControl tbControlPrincipal;
+        private System.Windows.Forms.TabPage tbSettings;
+        private System.Windows.Forms.TabPage tbBanco;
     }
 }

@@ -5,17 +5,11 @@ namespace RotinaBackupService.Func.Conection.settings
 {
     public class SettingsMani
     {
-        public string Connection { get; private set; }
-        public string Servidor { get; set; }
-        public string Banco { get; set; }
-        public string Pass { private get; set; }
-        public string User { get; set; }
-        private readonly string _connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;Integrated Security=True";
+        private readonly string _connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;Integrated Security=True";
         private string _getBanco = "SELECT banco FROM conenctions";
         private string _getServer = "SELECT Server FROM connections";
         private string _getUser = "SELECT User FROM Connections";
-        private string _getPass = "SEELCT Pass FROM Connections";
-
+        private string _getPass = "SELECT Pass FROM Connections";
 
         public void SaveSettingsBanco(string servidor, string banco, string pass, string user)
         {
@@ -27,7 +21,7 @@ namespace RotinaBackupService.Func.Conection.settings
             {
                 sqlCon.Open();
                 using (SqlCommand cmd = new SqlCommand(sql, sqlCon))
-                { 
+                {
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.Parameters.Add("@parm1", System.Data.SqlDbType.VarChar).Value = servidor;
                     cmd.Parameters.Add("@parm2", System.Data.SqlDbType.VarChar).Value = banco;
@@ -46,17 +40,16 @@ namespace RotinaBackupService.Func.Conection.settings
         public string GetConnection()
         {
 
-            string connection;
+            string connectionString;
 
             SqlConnection sqlCon = new SqlConnection(_connectionString);
 
             try
             {
-                
                 sqlCon.Open();
                 SqlCommand getServer = new SqlCommand(_getServer, sqlCon);
                 SqlCommand getBanco = new SqlCommand(_getBanco, sqlCon);
-                SqlCommand getUser = new SqlCommand (_getUser, sqlCon);
+                SqlCommand getUser = new SqlCommand(_getUser, sqlCon);
                 SqlCommand getPass = new SqlCommand(_getPass, sqlCon);
 
                 var server = Convert.ToString(getServer.ExecuteReader());
@@ -66,17 +59,31 @@ namespace RotinaBackupService.Func.Conection.settings
                 Cripto cripto = new Cripto(pass);
                 pass = cripto.GetPass();
 
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
 
-                connection = "Server = " + server + "; Database = " + banco + "; Encrypt = No; User Id = " + user + "; Password = " + pass;
+                builder.DataSource = server;
+                builder.InitialCatalog = banco;
+                builder.UserID = user;
+                builder.Password = pass;
+                builder.IntegratedSecurity = true;
+
+                connectionString = builder.ToString();
 
                 sqlCon.Close();
 
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                throw new Exception(ex.Message);
-            }    
-            return connection;
+                throw new Exception(ex.Message)
+                {
+                    Source = ex.Source
+                };
+            }
+            return connectionString;
         }
+
+
+
         public string GetCaminho()
         {
             SqlConnection sql = new SqlConnection(_connectionString);
@@ -87,7 +94,7 @@ namespace RotinaBackupService.Func.Conection.settings
 
         public string GetBase()
         {
-            SqlConnection sql = new SqlConnection (_connectionString);
+            SqlConnection sql = new SqlConnection(_connectionString);
             SqlCommand getBase = new SqlCommand("SELECT base FROM connections", sql);
 
             var banco = Convert.ToString(getBase.ExecuteReader());

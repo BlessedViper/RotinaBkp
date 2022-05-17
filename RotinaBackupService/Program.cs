@@ -21,7 +21,7 @@ namespace RotinaBackupService
             //{
 
             //}
-            //Application.Run(new Front.ConexaoForm());
+            Application.Run(new Front.ConexaoForm());
             Application.Run(new Front.Principal());
             //SqlServer sql = new SqlServer();
 

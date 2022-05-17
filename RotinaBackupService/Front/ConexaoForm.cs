@@ -64,8 +64,8 @@ namespace RotinaBackupService.Front
         }
 
         public void TestaCon(string connection)
-        {
-            if (txtBanco.Text != null | txtSenha.Text != null | txtServidor.Text != null | txtUser.Text != null)
+        { 
+            if (!string.IsNullOrEmpty(txtBanco.Text)| !string.IsNullOrEmpty(txtSenha.Text) | !string.IsNullOrEmpty(txtServidor.Text)| !string.IsNullOrEmpty(txtUser.Text))
             {
                 try
                 {
@@ -75,12 +75,15 @@ namespace RotinaBackupService.Front
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Falha ao se conectar a base de dados - " + ex.Message);
+                    throw new Exception("Falha ao se conectar a base de dados - " + ex.Message)
+                    {
+                        Source = ex.Source
+                    };
                 }
             }
             else
             {
-                MessageBox.Show("Preencha todos os campos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                throw new NullReferenceException();
             }
         }
 
@@ -90,20 +93,7 @@ namespace RotinaBackupService.Front
             Application.Exit();
         }
 
-        private void ConexaoForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void ConexaoForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
-        }
-        private void SeparaServer(string servidor, string instancia)
-        {
-
-
-        }
+        
     }
 
 }
