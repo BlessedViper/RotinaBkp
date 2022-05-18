@@ -74,11 +74,11 @@
       <DependentUpon>ConexaoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Func\Cripto.cs" />
-    <Compile Include="Front\Principal.cs">
+    <Compile Include="Front\Home.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Front\Principal.Designer.cs">
-      <DependentUpon>Principal.cs</DependentUpon>
+    <Compile Include="Front\Home.Designer.cs">
+      <DependentUpon>Home.cs</DependentUpon>
     </Compile>
     <Compile Include="Func\ConfigBackup.cs" />
     <Compile Include="Func\RealizaBkp.cs" />
@@ -90,8 +90,8 @@
     <EmbeddedResource Include="Front\ConexaoForm.resx">
       <DependentUpon>ConexaoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Front\Principal.resx">
-      <DependentUpon>Principal.cs</DependentUpon>
+    <EmbeddedResource Include="Front\Home.resx">
+      <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

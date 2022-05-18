@@ -1,28 +1,27 @@
-﻿using RotinaBackupService.Func.Conection.settings;
+﻿using MaterialSkin.Controls;
+using RotinaBackupService.Func.Conection.settings;
 using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace RotinaBackupService.Front
 {
-    public partial class ConexaoForm : MaterialSkin.Controls.MaterialForm
+    public partial class ConexaoForm : MaterialForm
     {
-
         public ConexaoForm()
         {
             InitializeComponent();
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
 
         }
 
         private void GravarBt_Click(object sender, EventArgs e)
         {
-            if (txtBanco.Text != "" | txtServidor.Text != "" | txtUser.Text != "" | txtUser.Text != "")
+            if (!string.IsNullOrEmpty(txtBanco.Text) | !string.IsNullOrEmpty(txtSenha.Text) | !string.IsNullOrEmpty(txtServidor.Text) | !string.IsNullOrEmpty(txtUser.Text))
             {
                 try
                 {
@@ -36,7 +35,8 @@ namespace RotinaBackupService.Front
 
                 MessageBox.Show("Dados gravados com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
-            } else
+            }
+            else
             {
                 MessageBox.Show("Preencha todos os campos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
@@ -64,8 +64,8 @@ namespace RotinaBackupService.Front
         }
 
         public void TestaCon(string connection)
-        { 
-            if (!string.IsNullOrEmpty(txtBanco.Text)| !string.IsNullOrEmpty(txtSenha.Text) | !string.IsNullOrEmpty(txtServidor.Text)| !string.IsNullOrEmpty(txtUser.Text))
+        {
+            if (!string.IsNullOrEmpty(txtBanco.Text) | !string.IsNullOrEmpty(txtSenha.Text) | !string.IsNullOrEmpty(txtServidor.Text) | !string.IsNullOrEmpty(txtUser.Text))
             {
                 try
                 {
@@ -93,7 +93,9 @@ namespace RotinaBackupService.Front
             Application.Exit();
         }
 
-        
+        private void ConexaoForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
-
 }

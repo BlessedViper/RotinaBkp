@@ -21,7 +21,6 @@ C:\Users\felip\Source\Repos\BlessedViper\RotinaBkp\RotinaBackupService\bin\Debug
 C:\Users\felip\Source\Repos\BlessedViper\RotinaBkp\RotinaBackupService\bin\Debug\RotinaBackupService.pdb
 C:\Users\felip\Source\Repos\BlessedViper\RotinaBkp\RotinaBackupService\bin\Debug\MaterialSkin.dll
 C:\Users\felip\Source\Repos\BlessedViper\RotinaBkp\RotinaBackupService\obj\Debug\RotinaBackupService.csproj.AssemblyReference.cache
-C:\Users\felip\Source\Repos\BlessedViper\RotinaBkp\RotinaBackupService\obj\Debug\RotinaBackupService.Front.Principal.resources
 C:\Users\felip\Source\Repos\BlessedViper\RotinaBkp\RotinaBackupService\obj\Debug\RotinaBackupService.Properties.Resources.resources
 C:\Users\felip\Source\Repos\BlessedViper\RotinaBkp\RotinaBackupService\obj\Debug\RotinaBackupService.csproj.GenerateResource.cache
 C:\Users\felip\Source\Repos\BlessedViper\RotinaBkp\RotinaBackupService\obj\Debug\RotinaBackupService.csproj.CoreCompileInputs.cache
@@ -29,3 +28,4 @@ C:\Users\felip\Source\Repos\BlessedViper\RotinaBkp\RotinaBackupService\obj\Debug
 C:\Users\felip\Source\Repos\BlessedViper\RotinaBkp\RotinaBackupService\obj\Debug\RotinaBackupService.exe
 C:\Users\felip\Source\Repos\BlessedViper\RotinaBkp\RotinaBackupService\obj\Debug\RotinaBackupService.pdb
 C:\Users\felip\Source\Repos\BlessedViper\RotinaBkp\RotinaBackupService\obj\Debug\RotinaBackupService.Front.ConexaoForm.resources
+C:\Users\felip\Source\Repos\BlessedViper\RotinaBkp\RotinaBackupService\obj\Debug\RotinaBackupService.Front.Home.resources
