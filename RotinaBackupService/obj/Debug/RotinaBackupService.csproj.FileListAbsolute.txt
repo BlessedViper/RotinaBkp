@@ -28,4 +28,5 @@ C:\Users\felip\Source\Repos\BlessedViper\RotinaBkp\RotinaBackupService\obj\Debug
 C:\Users\felip\Source\Repos\BlessedViper\RotinaBkp\RotinaBackupService\obj\Debug\RotinaBackupService.exe
 C:\Users\felip\Source\Repos\BlessedViper\RotinaBkp\RotinaBackupService\obj\Debug\RotinaBackupService.pdb
 C:\Users\felip\Source\Repos\BlessedViper\RotinaBkp\RotinaBackupService\obj\Debug\RotinaBackupService.Front.ConexaoForm.resources
-C:\Users\felip\Source\Repos\BlessedViper\RotinaBkp\RotinaBackupService\obj\Debug\RotinaBackupService.Front.Home.resources
+C:\Users\felip\Source\Repos\BlessedViper\RotinaBkp\RotinaBackupService\obj\Debug\RotinaBackupService.Front.HomeForm.resources
+C:\Users\felip\Source\Repos\BlessedViper\RotinaBkp\RotinaBackupService\obj\Debug\RotinaBackupService.Front.SettingsBkpForm.resources

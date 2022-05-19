@@ -5,15 +5,15 @@ namespace RotinaBackupService.Func.Conection.settings
 {
     public class SettingsMani
     {
-        
-        private readonly string _connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;Integrated Security=True";
-        private string _getBanco = "SELECT banco FROM conenctions";
-        private string _getServer = "SELECT Server FROM connections";
-        private string _getUser = "SELECT User FROM Connections";
-        private string _getPass = "SELECT Pass FROM Connections";
 
-        Exception conEx = new Exception("Ocorreu um erro ao tentar salvar as configurações - " );
-        
+        private readonly string _connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;Integrated Security=True";
+        private string _getBanco = "SELECT banco FROM connections";
+        private string _getServer = "SELECT Server FROM connections";
+        private string _getUser = "SELECT User FROM connections";
+        private string _getPass = "SELECT Pass FROM connections";
+
+
+
 
         public void SaveSettingsBanco(string servidor, string banco, string pass, string user)
         {
@@ -34,9 +34,12 @@ namespace RotinaBackupService.Func.Conection.settings
                 }
                 sqlCon.Close();
             }
-            catch 
+            catch (Exception ex)
             {
-                throw conEx;
+                throw new Exception(ex.Message)
+                {
+                    Source = ex.Source
+                };
 
             }
         }
@@ -45,18 +48,16 @@ namespace RotinaBackupService.Func.Conection.settings
         {
             SqlConnection sql = new SqlConnection(_connectionString);
             var update = "UPDATE BackupSettings SET Hora = @parm1, Minutos = @parm2, Caminho = @parm3";
-            
-                sql.Open();
-                
-                using (SqlCommand cmd = new SqlCommand(update, sql))
-                {
-                    cmd.CommandType = System.Data.CommandType.Text;
-                    cmd.Parameters.Add("@parm1", System.Data.SqlDbType.VarChar).Value = hora;
-                    cmd.Parameters.Add("@parm2", System.Data.SqlDbType.VarChar).Value = minutos;
-                    cmd.Parameters.Add("@parm3", System.Data.SqlDbType.VarChar).Value = caminho;
-                }
 
-            
+            sql.Open();
+
+            using (SqlCommand cmd = new SqlCommand(update, sql))
+            {
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.Parameters.Add("@parm1", System.Data.SqlDbType.VarChar).Value = hora;
+                cmd.Parameters.Add("@parm2", System.Data.SqlDbType.VarChar).Value = minutos;
+                cmd.Parameters.Add("@parm3", System.Data.SqlDbType.VarChar).Value = caminho;
+            }
         }
 
         public string GetConnection()
@@ -94,9 +95,12 @@ namespace RotinaBackupService.Func.Conection.settings
                 sqlCon.Close();
 
             }
-            catch
+            catch (Exception ex)
             {
-                throw conEx;
+                throw new Exception(ex.Message)
+                {
+                    Source = ex.Source
+                };
             }
             return connectionString;
         }
@@ -111,15 +115,25 @@ namespace RotinaBackupService.Func.Conection.settings
             return caminho;
         }
 
-        public string GetBase()
+        public string GetBase(string id)
         {
             SqlConnection sql = new SqlConnection(_connectionString);
-            SqlCommand getBase = new SqlCommand("SELECT base FROM connections", sql);
+            SqlCommand getBase = new SqlCommand($"SELECT base FROM connections WHERE ID == {id}", sql);
 
             var banco = Convert.ToString(getBase.ExecuteReader());
 
             return banco;
         }
+        public string GetServer(string id)
+        {
+            SqlConnection sql = new SqlConnection(_connectionString);
+            SqlCommand getServer = new SqlCommand($"SELECT servidor FROM connections WHERE ID == {id}", sql);
+
+            var server = Convert.ToString(getServer.ExecuteReader());
+
+            return server;
+        }
+
 
     }
 }

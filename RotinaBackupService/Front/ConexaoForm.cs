@@ -12,63 +12,60 @@ namespace RotinaBackupService.Front
         {
             InitializeComponent();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
-
-        }
-
         private void GravarBt_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtBanco.Text) | !string.IsNullOrEmpty(txtSenha.Text) | !string.IsNullOrEmpty(txtServidor.Text) | !string.IsNullOrEmpty(txtUser.Text))
+            try
             {
-                try
-                {
-                    SettingsMani settings = new SettingsMani();
-                    settings.SaveSettingsBanco(txtServidor.Text, txtBanco.Text, txtSenha.Text, txtUser.Text);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Sql Conection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-                MessageBox.Show("Dados gravados com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                TestaCon();
+                SettingsMani settings = new SettingsMani();
+                settings.SaveSettingsBanco(txtServidor.Text, txtBanco.Text, txtSenha.Text, txtUser.Text);
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Preencha todos os campos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+            MessageBox.Show("Dados gravados com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void TesteConBt_Click(object sender, EventArgs e)
         {
-            var connection = "Server = " + txtServidor.Text + "; Database = " + txtBanco.Text + "; Encrypt = True; User Id = " + txtUser.Text + "; Password = " + txtSenha.Text;
-
             try
             {
                 btTesteCon.Enabled = false;
                 btCancela.Enabled = false;
                 btGravar.Enabled = false;
-                TestaCon(connection);
+                TestaCon();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Sql Conection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 btTesteCon.Enabled = true;
                 btCancela.Enabled = true;
                 btGravar.Enabled = true;
+                return;
             }
+            MessageBox.Show("Teste realizado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            btTesteCon.Enabled = true;
+            btCancela.Enabled = true;
+            btGravar.Enabled = true;
 
         }
 
-        public void TestaCon(string connection)
+        public void TestaCon()
         {
             if (!string.IsNullOrEmpty(txtBanco.Text) | !string.IsNullOrEmpty(txtSenha.Text) | !string.IsNullOrEmpty(txtServidor.Text) | !string.IsNullOrEmpty(txtUser.Text))
             {
                 try
                 {
+                    SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                    builder.DataSource = txtServidor.Text;
+                    builder.InitialCatalog = txtBanco.Text;
+                    builder.UserID = txtUser.Text;
+                    builder.Password = txtSenha.Text;
+                    builder.IntegratedSecurity = true;
+                    var connection = builder.ToString();
+
                     SqlConnection sql = new SqlConnection(connection);
                     sql.Open();
 
@@ -87,15 +84,11 @@ namespace RotinaBackupService.Front
             }
         }
 
-
         private void Cancela_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
 
-        private void ConexaoForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-        }
+        
     }
 }
