@@ -11,10 +11,37 @@ namespace RotinaBackupService.Func.Conection.settings
         private string _getServer = "SELECT Server FROM connections";
         private string _getUser = "SELECT User FROM connections";
         private string _getPass = "SELECT Pass FROM connections";
+        private string _getId = "SELECT ID FROM connections";
 
+        public void UpdateSettingsBanco(string servidor, string banco, string pass, string user, int id)
+        {
+            Cripto cripto = new Cripto(pass);
+            SqlConnection sqlCon = new SqlConnection(_connectionString);
+            string sql = "UPDATE Connection SET Servidor = @parm1, Banco = @parm2, User = @parm3, Pass = @parm4 WHERE ID == @parm5";
+            
+            try
+            {
+                sqlCon.Open();
+                using (SqlCommand cmd = new SqlCommand(sql, sqlCon))
+                {
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.Parameters.Add("@parm1", System.Data.SqlDbType.VarChar).Value = servidor;
+                    cmd.Parameters.Add("@parm2", System.Data.SqlDbType.VarChar).Value = banco;
+                    cmd.Parameters.Add("@parm3", System.Data.SqlDbType.VarChar).Value = user;
+                    cmd.Parameters.Add("@parm4", System.Data.SqlDbType.VarChar).Value = cripto.SetCripto();
+                    cmd.Parameters.Add("@parm5", System.Data.SqlDbType.Int).Value = id;
+                }
+                sqlCon.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message)
+                {
+                    Source = ex.Source
+                };
 
-
-
+            }
+        }
         public void SaveSettingsBanco(string servidor, string banco, string pass, string user)
         {
             Cripto cripto = new Cripto(pass);
@@ -43,7 +70,6 @@ namespace RotinaBackupService.Func.Conection.settings
 
             }
         }
-
         public void SetSettingsBackup(string hora, string minutos, string caminho)
         {
             SqlConnection sql = new SqlConnection(_connectionString);
@@ -115,7 +141,7 @@ namespace RotinaBackupService.Func.Conection.settings
             return caminho;
         }
 
-        public string GetBase(string id)
+        public string GetBase(int id)
         {
             SqlConnection sql = new SqlConnection(_connectionString);
             SqlCommand getBase = new SqlCommand($"SELECT base FROM connections WHERE ID == {id}", sql);
@@ -132,6 +158,15 @@ namespace RotinaBackupService.Func.Conection.settings
             var server = Convert.ToString(getServer.ExecuteReader());
 
             return server;
+        }
+        
+        public int GetId()
+        {
+            SqlConnection sql = new SqlConnection(_connectionString);
+            SqlCommand _getId = new SqlCommand("SELECT ID FROM connections", sql);
+
+            var id = Convert.ToInt32(_getId.ExecuteReader());
+            return id;
         }
 
 

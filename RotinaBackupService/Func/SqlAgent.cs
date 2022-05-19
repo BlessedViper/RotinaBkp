@@ -13,22 +13,43 @@ namespace RotinaBackupService.Func.Conection
         {
             SettingsMani settings = new SettingsMani();
             _connection = settings.GetConnection();
-
-            SqlConnection con = new SqlConnection(_connection);
-            SqlCommand cmd = new SqlCommand("DBCC CHECKDB", con);
-
+            var id = settings.GetId();
+            for (int i = 0; i < id; i++)
+            {
+                var banco = settings.GetBase(i);
+                SqlConnection con = new SqlConnection(_connection);
+                SqlCommand cmd = new SqlCommand($"DBCC CHECKDB [{banco}]", con);
+            }
+            
 
         }
         public void Backup()
         {
             SettingsMani settings = new SettingsMani();
             _connection = settings.GetConnection();
-            //var banco = settings.GetBase();
+            var id = settings.GetId();
             var caminho = settings.GetCaminho();
-            //var backupCmd = $@"BACKUP DATABASE {banco} TO DISK={caminho}\%backupName%.bak";
+            var diaHora = DateTime.Now;
+            for (int i = 0; i < id; i++)
+            {
+                var banco = settings.GetBase(i);
+                var backupCmd = $@"BACKUP DATABASE {banco} TO DISK={caminho}\{banco}{diaHora}.bak";
 
-            SqlConnection con = new SqlConnection(_connection);
-            //SqlCommand cmd = new SqlCommand(backupCmd,con);
+                SqlConnection con = new SqlConnection(_connection);
+                SqlCommand cmd = new SqlCommand(backupCmd, con);
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }catch (Exception ex)
+                {
+                    throw new Exception
+                    {
+                        Source = ex.Source
+                    };
+                }
+                
+            }
+            
         }
 
         public void TesteConnection()

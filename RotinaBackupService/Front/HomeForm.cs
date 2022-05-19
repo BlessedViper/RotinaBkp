@@ -22,23 +22,19 @@ namespace RotinaBackupService.Front
 
         }
 
-        private void testNull(string hour, string min, string caminho)
-        {
-            if (string.IsNullOrEmpty(hour) | string.IsNullOrEmpty(min) | string.IsNullOrEmpty(caminho))
-            {
-                throw new NullReferenceException("Preencha todos os campos!");
-            } else
-            {
-                MessageBox.Show("Dados salvos com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        
 
         private void btAdicionar_Click(object sender, EventArgs e)
         {
             ConexaoForm addCon = new ConexaoForm();
             addCon.ShowDialog();
-
-
         }
+
+        private void btAlterar_Click(object sender, EventArgs e)
+        {
+            ConexaoForm addCon = new ConexaoForm();
+            addCon.ShowDialog();
+        }
+       
     }
 }

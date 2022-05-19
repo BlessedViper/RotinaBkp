@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -83,7 +83,6 @@
     <Compile Include="Front\SettingsBkpForm.Designer.cs">
       <DependentUpon>SettingsBkpForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Func\CriaDb.cs" />
     <Compile Include="Func\Cripto.cs" />
     <Compile Include="Front\HomeForm.cs">
       <SubType>Form</SubType>
@@ -150,6 +149,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Database.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\480px-Circulo_cinza.png" />
+    <None Include="Resources\1333.png" />
+    <None Include="Resources\a929d0a3f7f742dbe5fe0ac469e19c7d.png" />
+    <None Include="Images\a929d0a3f7f742dbe5fe0ac469e19c7d.png" />
+    <None Include="Images\1333.png" />
     <None Include="Images\lupa.png" />
   </ItemGroup>
   <ItemGroup />

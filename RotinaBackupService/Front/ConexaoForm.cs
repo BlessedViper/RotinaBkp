@@ -26,6 +26,10 @@ namespace RotinaBackupService.Front
                 return;
             }
             MessageBox.Show("Dados gravados com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Hide();
+            var caminhoForm = new SettingsBkpForm();
+            caminhoForm.Closed += (s, args) => this.Close();
+            caminhoForm.Show();
         }
 
         private void TesteConBt_Click(object sender, EventArgs e)
@@ -49,7 +53,6 @@ namespace RotinaBackupService.Front
             btTesteCon.Enabled = true;
             btCancela.Enabled = true;
             btGravar.Enabled = true;
-
         }
 
         public void TestaCon()
@@ -83,7 +86,6 @@ namespace RotinaBackupService.Front
                 throw new NullReferenceException();
             }
         }
-
         private void Cancela_Click(object sender, EventArgs e)
         {
             this.Close();

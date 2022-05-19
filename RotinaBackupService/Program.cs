@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RotinaBackupService.Func.Conection;
+using System;
 using System.IO;
 using System.Windows.Forms;
 
@@ -15,21 +16,15 @@ namespace RotinaBackupService
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            if (File.Exists($@"{Application.StartupPath}\Data\Data.sdf"))
-            {
-                Application.Run(new Front.HomeForm());
-            }
-            else
-            {
-                Application.Run(new Front.ConexaoForm());
-            }
-
-
-
-
-
-
-
+            //SqlAgent sql = new SqlAgent();
+            //try
+            //{
+            //    sql.TesteConnection();
+            //} catch (Exception ex)
+            //{
+            //    Application.Run(new Front.ConexaoForm());
+            //}
+            Application.Run(new Front.HomeForm());
 
 
         }

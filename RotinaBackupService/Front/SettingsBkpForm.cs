@@ -45,7 +45,10 @@ namespace RotinaBackupService.Front
                 return;
             }
             MessageBox.Show("Dados salvos com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
+            this.Hide();
+            var caminhoForm = new SettingsBkpForm();
+            caminhoForm.Closed += (s, args) => this.Close();
+            caminhoForm.Show();
 
         }
         private void testNull(string hour, string min, string caminho)
