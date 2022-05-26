@@ -9,13 +9,13 @@ namespace RotinaBackupService.Func.Conection
         private string _connection;
         
         
-        public void Dbcc()
+        public void DbccGeral()
         {
             SettingsMani settings = new SettingsMani();
-            _connection = settings.GetConnection();
             var id = settings.GetId();
             for (int i = 0; i < id; i++)
             {
+                _connection = settings.GetConnection(i);
                 var banco = settings.GetBase(i);
                 SqlConnection con = new SqlConnection(_connection);
                 SqlCommand cmd = new SqlCommand($"DBCC CHECKDB [{banco}]", con);
@@ -23,15 +23,16 @@ namespace RotinaBackupService.Func.Conection
             
 
         }
-        public void Backup()
+        public void BackupGeral()
         {
             SettingsMani settings = new SettingsMani();
-            _connection = settings.GetConnection();
+            
             var id = settings.GetId();
             var caminho = settings.GetCaminho();
             var diaHora = DateTime.Now;
             for (int i = 0; i < id; i++)
             {
+                _connection = settings.GetConnection(i);
                 var banco = settings.GetBase(i);
                 var backupCmd = $@"BACKUP DATABASE {banco} TO DISK={caminho}\{banco}{diaHora}.bak";
 
@@ -52,10 +53,10 @@ namespace RotinaBackupService.Func.Conection
             
         }
 
-        public void TesteConnection()
+        public void TesteConnection(int id)
         {
             SettingsMani settings = new SettingsMani();
-            _connection = settings.GetConnection();
+            _connection = settings.GetConnection(id);
 
             SqlConnection sql = new SqlConnection(_connection);
             try 
@@ -71,6 +72,38 @@ namespace RotinaBackupService.Func.Conection
             
         }
 
+        public void Dbcc(int id)
+        {
+            SettingsMani settings = new SettingsMani();
+            _connection = settings.GetConnection(id);
+            var banco = settings.GetBase(id);
+            SqlConnection con = new SqlConnection(_connection);
+            SqlCommand cmd = new SqlCommand($"DBCC CHECKDB [{banco}]", con);
+        }
+        
+        public void Backup(int id)
+        {
+            SettingsMani settings = new SettingsMani();
+            _connection = settings.GetConnection(id);
+            var banco = settings.GetBase(id);
+            var caminho = settings.GetCaminho();
+            var diaHora = DateTime.Now;
+            SqlConnection con = new SqlConnection(_connection);
+            SqlCommand cmd = new SqlCommand($@"BACKUP DATABASE {banco} TO DISK={caminho}\{banco}{diaHora}.bak", con);
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+            } catch (Exception ex)
+            {
+                throw new Exception (ex.Message)
+                {
+                    Source = ex.Source
+                };
+            }
+        }
+
+        
     }
 }
 

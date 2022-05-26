@@ -33,13 +33,15 @@
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.btAdicionar = new MaterialSkin.Controls.MaterialButton();
-            this.materialListView1 = new MaterialSkin.Controls.MaterialListView();
+            this.lvServers = new MaterialSkin.Controls.MaterialListView();
+            this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Servidor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Base = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.HoraBkp = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Caminho = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btAlterar = new MaterialSkin.Controls.MaterialButton();
             this.btBackup = new MaterialSkin.Controls.MaterialButton();
+            this.btCheckDb = new MaterialSkin.Controls.MaterialButton();
             this.SuspendLayout();
             // 
             // materialDivider1
@@ -86,32 +88,39 @@
             this.btAdicionar.UseAccentColor = false;
             this.btAdicionar.UseVisualStyleBackColor = true;
             // 
-            // materialListView1
+            // lvServers
             // 
-            this.materialListView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lvServers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialListView1.AutoSizeTable = false;
-            this.materialListView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialListView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvServers.AutoSizeTable = false;
+            this.lvServers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.lvServers.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lvServers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.id,
             this.Servidor,
             this.Base,
             this.HoraBkp,
             this.Caminho});
-            this.materialListView1.Depth = 0;
-            this.materialListView1.FullRowSelect = true;
-            this.materialListView1.HideSelection = false;
-            this.materialListView1.Location = new System.Drawing.Point(6, 79);
-            this.materialListView1.MinimumSize = new System.Drawing.Size(200, 100);
-            this.materialListView1.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialListView1.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialListView1.Name = "materialListView1";
-            this.materialListView1.OwnerDraw = true;
-            this.materialListView1.Size = new System.Drawing.Size(1276, 420);
-            this.materialListView1.TabIndex = 11;
-            this.materialListView1.UseCompatibleStateImageBehavior = false;
-            this.materialListView1.View = System.Windows.Forms.View.Details;
+            this.lvServers.Depth = 0;
+            this.lvServers.FullRowSelect = true;
+            this.lvServers.HideSelection = false;
+            this.lvServers.Location = new System.Drawing.Point(6, 76);
+            this.lvServers.MinimumSize = new System.Drawing.Size(200, 100);
+            this.lvServers.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.lvServers.MouseState = MaterialSkin.MouseState.OUT;
+            this.lvServers.MultiSelect = false;
+            this.lvServers.Name = "lvServers";
+            this.lvServers.OwnerDraw = true;
+            this.lvServers.Size = new System.Drawing.Size(1276, 420);
+            this.lvServers.TabIndex = 11;
+            this.lvServers.UseCompatibleStateImageBehavior = false;
+            this.lvServers.View = System.Windows.Forms.View.Details;
+            // 
+            // id
+            // 
+            this.id.Text = "ID";
+            this.id.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Servidor
             // 
@@ -126,13 +135,13 @@
             // HoraBkp
             // 
             this.HoraBkp.Text = "Hora";
-            this.HoraBkp.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.HoraBkp.Width = 150;
             // 
             // Caminho
             // 
             this.Caminho.Text = "Caminho";
-            this.Caminho.Width = 450;
+            this.Caminho.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Caminho.Width = 400;
             // 
             // btAlterar
             // 
@@ -161,22 +170,48 @@
             // 
             this.btBackup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.btBackup.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btBackup.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btBackup.Depth = 0;
             this.btBackup.HighEmphasis = true;
             this.btBackup.Icon = null;
-            this.btBackup.Location = new System.Drawing.Point(900, 534);
+            this.btBackup.Location = new System.Drawing.Point(6, 534);
             this.btBackup.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btBackup.MouseState = MaterialSkin.MouseState.HOVER;
             this.btBackup.Name = "btBackup";
             this.btBackup.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btBackup.Size = new System.Drawing.Size(158, 36);
+            this.btBackup.Size = new System.Drawing.Size(78, 36);
             this.btBackup.TabIndex = 13;
             this.btBackup.Text = "Backup";
             this.btBackup.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btBackup.UseAccentColor = false;
             this.btBackup.UseVisualStyleBackColor = true;
             this.btBackup.Visible = false;
+            this.btBackup.Click += new System.EventHandler(this.btBackup_Click);
+            // 
+            // btCheckDb
+            // 
+            this.btCheckDb.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btCheckDb.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btCheckDb.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btCheckDb.Depth = 0;
+            this.btCheckDb.HighEmphasis = true;
+            this.btCheckDb.Icon = null;
+            this.btCheckDb.Location = new System.Drawing.Point(92, 534);
+            this.btCheckDb.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btCheckDb.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btCheckDb.Name = "btCheckDb";
+            this.btCheckDb.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btCheckDb.Size = new System.Drawing.Size(91, 36);
+            this.btCheckDb.TabIndex = 14;
+            this.btCheckDb.Text = "Check Db";
+            this.btCheckDb.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btCheckDb.UseAccentColor = false;
+            this.btCheckDb.UseVisualStyleBackColor = true;
+            this.btCheckDb.Visible = false;
+            this.btCheckDb.Click += new System.EventHandler(this.btCheckDb_Click);
             // 
             // HomeForm
             // 
@@ -184,9 +219,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1304, 697);
+            this.Controls.Add(this.btCheckDb);
             this.Controls.Add(this.btBackup);
             this.Controls.Add(this.btAdicionar);
-            this.Controls.Add(this.materialListView1);
+            this.Controls.Add(this.lvServers);
             this.Controls.Add(this.btAlterar);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -207,12 +243,14 @@
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
         private System.Windows.Forms.ImageList imageList1;
         private MaterialSkin.Controls.MaterialButton btAdicionar;
-        private MaterialSkin.Controls.MaterialListView materialListView1;
+        private MaterialSkin.Controls.MaterialListView lvServers;
         private System.Windows.Forms.ColumnHeader Servidor;
         private System.Windows.Forms.ColumnHeader Base;
         private System.Windows.Forms.ColumnHeader HoraBkp;
         private System.Windows.Forms.ColumnHeader Caminho;
         private MaterialSkin.Controls.MaterialButton btAlterar;
         private MaterialSkin.Controls.MaterialButton btBackup;
+        private MaterialSkin.Controls.MaterialButton btCheckDb;
+        private System.Windows.Forms.ColumnHeader id;
     }
 }

@@ -7,11 +7,7 @@ namespace RotinaBackupService.Func.Conection.settings
     {
 
         private readonly string _connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;Integrated Security=True";
-        private string _getBanco = "SELECT banco FROM connections";
-        private string _getServer = "SELECT Server FROM connections";
-        private string _getUser = "SELECT User FROM connections";
-        private string _getPass = "SELECT Pass FROM connections";
-        private string _getId = "SELECT ID FROM connections";
+        
 
         public void UpdateSettingsBanco(string servidor, string banco, string pass, string user, int id)
         {
@@ -46,7 +42,7 @@ namespace RotinaBackupService.Func.Conection.settings
         {
             Cripto cripto = new Cripto(pass);
             SqlConnection sqlCon = new SqlConnection(_connectionString);
-            string sql = "UPDATE Connection SET Servidor = @parm1, Banco = @parm2, User = @parm3, Pass = @parm4";
+            string sql = "INSERT INTO Connection (Servidor, Banco, User, Pass) VALUES (@parm1, @parm2, @parm3, @parm4)";
 
             try
             {
@@ -86,12 +82,16 @@ namespace RotinaBackupService.Func.Conection.settings
             }
         }
 
-        public string GetConnection()
+        public string GetConnection(int id)
         {
 
             string connectionString;
 
             SqlConnection sqlCon = new SqlConnection(_connectionString);
+            string _getBanco = $"SELECT banco FROM connections WHERE id == {id}";
+            string _getServer = $"SELECT Server FROM connectionsWHERE id == {id}";
+            string _getUser = $"SELECT User FROM connectionsWHERE id == {id}";
+            string _getPass = $"SELECT Pass FROM connectionsWHERE id == {id}";
 
             try
             {
@@ -150,7 +150,7 @@ namespace RotinaBackupService.Func.Conection.settings
 
             return banco;
         }
-        public string GetServer(string id)
+        public string GetServer(int id)
         {
             SqlConnection sql = new SqlConnection(_connectionString);
             SqlCommand getServer = new SqlCommand($"SELECT servidor FROM connections WHERE ID == {id}", sql);
@@ -165,10 +165,29 @@ namespace RotinaBackupService.Func.Conection.settings
             SqlConnection sql = new SqlConnection(_connectionString);
             SqlCommand _getId = new SqlCommand("SELECT ID FROM connections", sql);
 
-            var id = Convert.ToInt32(_getId.ExecuteReader());
+            var id = Convert.ToInt32(_getId.ExecuteNonQuery());
             return id;
         }
 
+        public Array GetDados(int id)
+        {
+            SqlConnection sql = new SqlConnection(_connectionString);
 
+            string _getId = $"SELECT banco FROM connections WHERE id == {id}";
+            string _getBanco = $"SELECT banco FROM connections WHERE id == {id}";
+            string _getServer = $"SELECT Server FROM connections WHERE id == {id}";
+            string _getHora = $"SELECT Hora FROM Settings WHERE id == {id}";
+            string _getCaminho = $"SELECT Pass FROM connections WHERE id == {id}";
+            SqlCommand getServer = new SqlCommand(_getServer, sql);
+            SqlCommand getBanco = new SqlCommand(_getBanco, sql);
+            SqlCommand getUser = new SqlCommand(_getUser, sql);
+            SqlCommand getPass = new SqlCommand(_getPass, sql);
+
+            
+            string[] dados = new string[5];
+            dados[0] = 
+
+            return dados;
+        }
     }
 }

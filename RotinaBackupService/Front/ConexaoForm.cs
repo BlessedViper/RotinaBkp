@@ -8,28 +8,38 @@ namespace RotinaBackupService.Front
 {
     public partial class ConexaoForm : MaterialForm
     {
-        public ConexaoForm()
+        public int Operacao { get; set; }
+        public int IdBanco { get; set; }
+        public ConexaoForm(int operacao)
         {
             InitializeComponent();
+            Operacao = operacao;
         }
         private void GravarBt_Click(object sender, EventArgs e)
         {
-            try
+            if (Operacao == 0)
             {
-                TestaCon();
-                SettingsMani settings = new SettingsMani();
-                settings.SaveSettingsBanco(txtServidor.Text, txtBanco.Text, txtSenha.Text, txtUser.Text);
-            }
-            catch (Exception ex)
+                try
+                {
+                    GravarSettings();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            } else
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                try
+                {
+                    AlterarSettings(IdBanco);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
-            MessageBox.Show("Dados gravados com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Hide();
-            var caminhoForm = new SettingsBkpForm();
-            caminhoForm.Closed += (s, args) => this.Close();
-            caminhoForm.Show();
         }
 
         private void TesteConBt_Click(object sender, EventArgs e)
@@ -91,6 +101,29 @@ namespace RotinaBackupService.Front
             this.Close();
         }
 
-        
+        private void GravarSettings()
+        {
+
+            TestaCon();
+            SettingsMani settings = new SettingsMani();
+            settings.SaveSettingsBanco(txtServidor.Text, txtBanco.Text, txtSenha.Text, txtUser.Text);
+            MessageBox.Show("Dados gravados com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Hide();
+            var caminhoForm = new SettingsBkpForm();
+            caminhoForm.Closed += (s, args) => this.Close();
+            caminhoForm.Show();
+
+        }
+
+        private void AlterarSettings(int idBanco)
+        {
+            TestaCon();
+            SettingsMani settings = new SettingsMani();
+            settings.UpdateSettingsBanco(txtServidor.Text, txtBanco.Text, txtSenha.Text, txtUser.Text, idBanco);
+            MessageBox.Show("Dados gravados com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
+        }
+
+
     }
 }
