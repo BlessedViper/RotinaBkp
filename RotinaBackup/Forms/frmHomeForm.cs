@@ -1,5 +1,6 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
+using RotinaBackupService.Func;
 using RotinaBackupService.Func.Conection;
 using RotinaBackupService.Func.Conection.settings;
 using System;
@@ -11,7 +12,7 @@ namespace RotinaBackupService.Forms
     public partial class frmHomeForm : MaterialForm
     {
         private int _count = 0;
-        private SettingsMani _settings;
+        private SettingsControll _settings;
         public frmHomeForm()
         {
             InitializeComponent();
@@ -30,11 +31,8 @@ namespace RotinaBackupService.Forms
 
         private void Principal_Load(object sender, EventArgs e)
         {
-            
-
+            FeedGrid();
         }
-
-        
 
         private void btAdicionar_Click(object sender, EventArgs e)
         {
@@ -62,18 +60,6 @@ namespace RotinaBackupService.Forms
             sql.Backup(id);
         }
 
-        private void listarItens()
-        {
-            SettingsMani settings = new SettingsMani();
-            
-            var idBanco = settings.GetId();
-            do
-            {
-
-            }
-            while (idBanco < lvServers.Items.Count);
-        }
-
         private void btAdicionar_Click_1(object sender, EventArgs e)
         {
             FormControll frm = new FormControll();
@@ -82,7 +68,35 @@ namespace RotinaBackupService.Forms
 
         private void FeedGrid()
         {
-            _settings = new SettingsMani();
+            grdServer.Columns.Clear();
+            grdServer.Rows.Clear();
+            try
+            {
+                _settings = new();
+                var list = _settings.GetServers();
+                var columnId = new DataGridViewTextBoxColumn();
+                var columnServidor = new DataGridViewTextBoxColumn();
+                var columnBase = new DataGridViewTextBoxColumn();
+                var columnHora = new DataGridViewTextBoxColumn();
+                var columnCaminho = new DataGridViewTextBoxColumn();
+
+                columnId.HeaderText = "ID";
+                columnServidor.HeaderText = "Servidor";
+                columnBase.HeaderText = "Base";
+                columnHora.HeaderText = "Hora";
+                columnCaminho.HeaderText = "Caminho";
+
+                grdServer.Columns.AddRange(columnId, columnServidor, columnBase, columnHora, columnCaminho);
+                foreach (var obj in list)
+                {
+                    var hora = $"{obj.Settings.Hora}:{obj.Settings.Minuto}";
+                    grdServer.Rows.Add(obj.Id, obj.Instancia, obj.Banco, hora, obj.Settings.Caminho);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

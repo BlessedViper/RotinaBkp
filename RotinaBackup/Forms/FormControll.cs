@@ -1,7 +1,4 @@
-﻿using RotinaBackupService.Func.Conection;
-using RotinaBackupService.Forms;
-
-namespace RotinaBackupService.Forms
+﻿namespace RotinaBackupService.Forms
 {
     public class FormControll
     {
